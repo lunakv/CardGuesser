@@ -1,0 +1,15 @@
+name: CI actions
+on: [push, pull_request]
+jobs:
+  CI:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Install
+        run: yarn install
+      - name: Build
+        run: yarn build
+      - name: Check Code Style
+        run: yarn lint
+      - name: Check Type Correctness
+        run: yarn check

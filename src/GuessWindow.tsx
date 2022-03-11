@@ -6,6 +6,7 @@ import { FormEvent, useEffect, useState } from 'react';
 import fetchRandom from './loadRandomCard';
 import { CardObject, getArt, getName } from './CardObject';
 import './GuessWindow.css';
+import { CardInfo } from './CardInfo';
 
 function namesEqual(a: string, b: string) {
   return a.toLowerCase() === b.toLowerCase();
@@ -24,8 +25,17 @@ function GuessWindow() {
     }
   }, [isLoading]);
 
-  const handleClick = () => { setLoading(true); setRevealed(false); return false; };
-  const handleLoaded = () => setLoading(false);
+  useEffect(() => {
+    if (revealed) {
+      document.getElementById('next').focus();
+    }
+  }, [revealed]);
+
+  const handleNext = () => { setLoading(true); setRevealed(false); setCorrect(2); return false; };
+  const handleLoaded = () => {
+    setLoading(false);
+    document.getElementById('guess-input').focus();
+  };
   const handleGiveUp = () => { setRevealed(true); setCorrect(2); };
   const handleChange = (e) => {
     setGuess(e.target.value);
@@ -56,15 +66,15 @@ function GuessWindow() {
           </Row>
 
           <Form onSubmit={handleSubmit}>
-            <Row>
-              <Form.Control hidden={revealed} type="text" placeholder="Enter card name" value={guess} onChange={handleChange} />
-              <Form.Control hidden={!revealed} plaintext readOnly value={card && getName(card)} />
+            <Row style={{ height: '3em' }}>
+              <Form.Control id="guess-input" hidden={revealed} type="text" placeholder="Enter card name" value={guess} onChange={handleChange} />
+              <CardInfo hidden={!revealed} card={card} />
             </Row>
             <Row className="justify-content-center mt-3">
               { revealed
                 ? (
                   <Col xs="auto">
-                    <Form.Control className="game-button btn-success" type="button" onClick={handleClick} value="Next" />
+                    <input id="next" className="game-button btn btn-success" type="button" onClick={handleNext} value="Next" />
                   </Col>
                 ) : (
                   <>

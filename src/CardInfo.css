@@ -1,0 +1,5 @@
+a.card-info {
+    text-decoration: underline dotted;
+    text-decoration-color: black;
+    color: black !important;
+}

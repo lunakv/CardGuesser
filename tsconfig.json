@@ -1,0 +1,7 @@
+{
+  "compilerOptions": {
+    "skipLibCheck": true,
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true
+  }
+}

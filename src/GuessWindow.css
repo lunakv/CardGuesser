@@ -5,7 +5,7 @@
 }
 
 .game-button {
-    width: 200px;
+    width: 40vw;
 }
 
 @media(min-width: 992px) {

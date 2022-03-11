@@ -842,6 +842,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@primer/octicons-react@npm:^17.0.0":
+  version: 17.0.0
+  resolution: "@primer/octicons-react@npm:17.0.0"
+  peerDependencies:
+    react: ">=15"
+  checksum: 0723c17b2c7e1acef6ebd9bc6020df439d295ab6e74fd8ce553cbe0febbb4552c19fd263d1d734eb45738f8051d716846496426548124743fd4370cd49b37587
+  languageName: node
+  linkType: hard
+
 "@react-aria/ssr@npm:^3.0.1":
   version: 3.1.2
   resolution: "@react-aria/ssr@npm:3.1.2"
@@ -1458,6 +1467,7 @@ __metadata:
     "@parcel/core": ^2.3.2
     "@parcel/optimizer-data-url": 2.3.2
     "@parcel/transformer-inline-string": 2.3.2
+    "@primer/octicons-react": ^17.0.0
     "@types/react": ^17.0.40
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": ^5.14.0

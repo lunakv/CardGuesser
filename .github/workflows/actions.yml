@@ -9,7 +9,8 @@ jobs:
         run: yarn install
       - name: Build
         run: yarn build
-      - name: Check Code Style
-        run: yarn lint
       - name: Check Type Correctness
         run: yarn check
+      - name: Check Code Style
+        run: yarn lint
+

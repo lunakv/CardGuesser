@@ -10,6 +10,8 @@
   },
   "devDependencies": {
     "@parcel/core": "^2.3.2",
+    "@parcel/optimizer-data-url": "2.3.2",
+    "@parcel/transformer-inline-string": "2.3.2",
     "@types/react": "^17.0.40",
     "@typescript-eslint/eslint-plugin": "latest",
     "@typescript-eslint/parser": "^5.14.0",

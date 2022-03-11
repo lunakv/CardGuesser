@@ -1,11 +1,40 @@
-.form-control.wrong {
-    box-shadow: 0 0 0 .25rem red;
+#question-image.wrong {
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0,0,0);
+    perspective: 1000px;
 }
 
-.form-control.correct {
-    box-shadow: 0 0 0 .25rem green;
+.game-button {
+    width: 200px;
+    margin: 0 30px;
+}
+
+#question-image-overlay {
+    /*noinspection CssUnknownTarget*/
+    background-image: url("data-url:overlay.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
 
 .form-control:focus {
     box-shadow: none !important;
+}
+
+@keyframes shake {
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%, 80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%, 60% {
+        transform: translate3d(4px, 0, 0);
+    }
 }

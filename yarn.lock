@@ -380,6 +380,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@parcel/optimizer-data-url@npm:2.3.2":
+  version: 2.3.2
+  resolution: "@parcel/optimizer-data-url@npm:2.3.2"
+  dependencies:
+    "@parcel/plugin": 2.3.2
+    "@parcel/utils": 2.3.2
+    isbinaryfile: ^4.0.2
+    mime: ^2.4.4
+  checksum: 8024918caac732142cc01a7601ab567d580817637bb697f8e22deb0e4d4c139a8c7d587d90efd879b9c00b9d498b58f6ac2d759602ad9fb86baa9c5ab7691a16
+  languageName: node
+  linkType: hard
+
 "@parcel/optimizer-htmlnano@npm:2.3.2":
   version: 2.3.2
   resolution: "@parcel/optimizer-htmlnano@npm:2.3.2"
@@ -659,6 +671,15 @@ __metadata:
     "@parcel/workers": 2.3.2
     nullthrows: ^1.1.1
   checksum: 3457aa4da14a8e490c9c121f5ff37bb91342d4f3ecc1a33c453b388913c842a127517ff2ad5f790a781cfdbf4e43a6f1255a415764844b47df6e89ec87bc9051
+  languageName: node
+  linkType: hard
+
+"@parcel/transformer-inline-string@npm:2.3.2":
+  version: 2.3.2
+  resolution: "@parcel/transformer-inline-string@npm:2.3.2"
+  dependencies:
+    "@parcel/plugin": 2.3.2
+  checksum: f8b5bbee72ee10c77076f36ff10a4ef123aceb9798fbb923fafae1b8897c6344afd00103b7c480c63931f9938fcedebe6f77082074f73e9de72c718ac50258a4
   languageName: node
   linkType: hard
 
@@ -1435,6 +1456,8 @@ __metadata:
   resolution: "card-guesser@workspace:."
   dependencies:
     "@parcel/core": ^2.3.2
+    "@parcel/optimizer-data-url": 2.3.2
+    "@parcel/transformer-inline-string": 2.3.2
     "@types/react": ^17.0.40
     "@typescript-eslint/eslint-plugin": latest
     "@typescript-eslint/parser": ^5.14.0
@@ -2969,6 +2992,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"isbinaryfile@npm:^4.0.2":
+  version: 4.0.8
+  resolution: "isbinaryfile@npm:4.0.8"
+  checksum: 606e3bb648d1a0dee23459d1d937bb2560e66a5281ec7c9ff50e585402d73321ac268d0f34cb7393125b3ebc4c7962d39e50a01cdb8904b52fce08b7ccd2bf9f
+  languageName: node
+  linkType: hard
+
 "isexe@npm:^2.0.0":
   version: 2.0.0
   resolution: "isexe@npm:2.0.0"
@@ -3226,6 +3256,15 @@ __metadata:
     braces: ^3.0.1
     picomatch: ^2.2.3
   checksum: ef3d1c88e79e0a68b0e94a03137676f3324ac18a908c245a9e5936f838079fcc108ac7170a5fadc265a9c2596963462e402841406bda1a4bb7b68805601d631c
+  languageName: node
+  linkType: hard
+
+"mime@npm:^2.4.4":
+  version: 2.6.0
+  resolution: "mime@npm:2.6.0"
+  bin:
+    mime: cli.js
+  checksum: 1497ba7b9f6960694268a557eae24b743fd2923da46ec392b042469f4b901721ba0adcf8b0d3c2677839d0e243b209d76e5edcbd09cfdeffa2dfb6bb4df4b862
   languageName: node
   linkType: hard
 

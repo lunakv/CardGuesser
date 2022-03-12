@@ -12,14 +12,18 @@ function App() {
     <>
       <Container fluid>
         <Navbar expand>
-          <Navbar.Brand className="ms-md-5" href="#">Card Guesser</Navbar.Brand>
+          <Navbar.Brand className="ms-md-5" href="#">
+            Card Guesser
+          </Navbar.Brand>
           <Navbar.Collapse role="navigation">
             <Nav className="pe-md-4">
-
               <Nav.Link onClick={() => setShowStats(true)}>Stats</Nav.Link>
-
             </Nav>
-            <Nav className="ms-auto"><Nav.Link href={repoUrl}><MarkGithubIcon size={22} /></Nav.Link></Nav>
+            <Nav className="ms-auto">
+              <Nav.Link href={repoUrl}>
+                <MarkGithubIcon size={22} />
+              </Nav.Link>
+            </Nav>
           </Navbar.Collapse>
         </Navbar>
       </Container>

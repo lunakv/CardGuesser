@@ -5,6 +5,7 @@
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html",
+    "prettify": "prettier --write src",
     "lint": "eslint 'src/**'",
     "check": "tsc --jsx preserve --noEmit"
   },
@@ -18,8 +19,10 @@
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "latest",
     "eslint-config-airbnb-typescript": "^16.1.1",
+    "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "parcel": "^2.3.2",

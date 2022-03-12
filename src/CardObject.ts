@@ -3,8 +3,8 @@ export const getName = (card: CardObject) => card.name;
 export interface CardObject {
   name: string;
   image_uris: {
-    art_crop: string;
-  }
+    art_crop: string,
+  };
   scryfall_uri: string;
   artist: string;
 }

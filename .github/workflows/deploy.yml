@@ -42,8 +42,8 @@ jobs:
           SSH_HOST: ${{ secrets.SSH_HOST }}
           SSH_PORT: ${{ secrets.SSH_PORT }}   
       
-     - name: Upload files
-       run: scp . deploy:CardGuesser 
+      - name: Upload files
+        run: scp . deploy:CardGuesser 
      
-     - name: Deployment completed
-       run: echo 'Finished!'
+      - name: Deployment completed
+        run: echo 'Finished!'

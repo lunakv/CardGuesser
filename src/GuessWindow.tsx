@@ -33,6 +33,7 @@ function GuessWindow() {
 
   const handleNext = () => {
     setLoading(true);
+	setCard(undefined);
     setRevealed(false);
     setCorrect(2);
     getNextCard();

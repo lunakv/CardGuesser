@@ -18,6 +18,7 @@ function get(key: string) {
 
 export function onCorrect() {
   addOne(CURRENT_W);
+  addOne(TOTAL_W);
   reset(CURRENT_L);
   if (get(CURRENT_W) > get(LONGEST_W)) addOne(LONGEST_W);
 }

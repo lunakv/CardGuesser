@@ -2,14 +2,15 @@ import Button from 'react-bootstrap/Button';
 import { Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { FormEvent, useEffect, useState } from 'react';
 import fetchRandom from './loadRandomCard';
-import { CardObject, getArt, getName } from './CardObject';
+import { CardObject, getAllNames, getArt, getFullName } from './CardObject';
 import './GuessWindow.css';
 import { CardInfo } from './CardInfo';
 import { onGiveUp, onCorrect } from './stats';
 import LoadingSpinner from './LoadingSpinner';
 
-function namesEqual(a: string, b: string) {
-  return a.toLowerCase() === b.toLowerCase();
+function isCorrectName(a: string, b: CardObject) {
+  const al = a.toLowerCase();
+  return getFullName(b).toLowerCase() === al || getAllNames(b).some((n) => n.toLowerCase() === al);
 }
 
 function GuessWindow() {
@@ -54,7 +55,7 @@ function GuessWindow() {
     e.preventDefault();
     e.stopPropagation();
     if (revealed) return false;
-    if (guess && card && namesEqual(guess, getName(card))) {
+    if (guess && card && isCorrectName(guess, card)) {
       setCorrect(0);
       setRevealed(true);
       onCorrect();

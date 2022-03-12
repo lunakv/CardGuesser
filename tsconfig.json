@@ -2,6 +2,7 @@
   "compilerOptions": {
     "skipLibCheck": true,
     "jsx": "preserve",
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["es2015", "dom"]
   }
 }

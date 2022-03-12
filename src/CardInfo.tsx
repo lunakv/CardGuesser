@@ -1,9 +1,9 @@
 import './CardInfo.css';
-import { CardObject } from './CardObject';
+import { getArtist, getFullName, MultiFacedCardObject, SimpleCardObject } from './CardObject';
 
 interface Props {
   hidden: boolean;
-  card: CardObject;
+  card: SimpleCardObject | MultiFacedCardObject | undefined;
 }
 
 export function CardInfo({ hidden, card }: Props) {
@@ -11,9 +11,9 @@ export function CardInfo({ hidden, card }: Props) {
   return (
     <p hidden={hidden} className="text-center mt-2">
       <a className="card-info" target="_blank" rel="noopener noreferrer" href={card.scryfall_uri}>
-        {card.name}
+        {getFullName(card)}
       </a>{' '}
-      (by {card.artist})
+      (by {getArtist(card)})
     </p>
   );
 }

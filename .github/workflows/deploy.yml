@@ -39,7 +39,7 @@ jobs:
         env:
           SSH_USER: ${{ secrets.SSH_USER }}
           SSH_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_HOST: ${{ secrets.SSH_HOST }}
+          SSH_HOST: ${{ secrets.SSH_HOSTNAME }}
           SSH_PORT: ${{ secrets.SSH_PORT }}   
       
       - name: Upload files

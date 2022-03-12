@@ -1,8 +1,11 @@
 export const getArt = (card: CardObject) => {
-  if ('card_faces' in card) {
+  if ('image_uris' in card) {
+    return card.image_uris.art_crop;
+  }
+  if ('card_faces' in card && 'image_uris' in card.card_faces[0]) {
     return card.card_faces[0].image_uris.art_crop;
   }
-  return card.image_uris.art_crop;
+  return undefined;
 };
 
 export const getFullName = (card: CardObject) => card.name;
@@ -42,4 +45,12 @@ export interface MultiFacedCardObject extends CardBase {
   ];
 }
 
-export type CardObject = SimpleCardObject | MultiFacedCardObject;
+export interface SplitCardObject extends CardBase {
+  card_faces: [];
+  image_uris: {
+    art_crop: string,
+  };
+  artist: string;
+}
+
+export type CardObject = SimpleCardObject | MultiFacedCardObject | SplitCardObject;

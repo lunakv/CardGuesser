@@ -21,9 +21,9 @@ function GuessWindow() {
   const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
-    if (isLoading) {
-      fetchRandom().then(setCard);
-    }
+    if (!isLoading) return;
+    // eslint-disable-next-line no-constant-condition
+    fetchRandom().then(setCard);
   }, [isLoading]);
 
   useEffect(() => {

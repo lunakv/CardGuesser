@@ -3,13 +3,19 @@ import { getArt } from './CardObject';
 
 const queryURI = 'https://api.scryfall.com/cards/random';
 
-async function fetchRandom() {
+async function fetchRandom(filter: string) {
+  const query = filter === '' ? '' : `?q=${encodeURIComponent(filter)}`;
   let card;
-  while (!card || !getArt(card)) {
-    const res = await fetch(queryURI);
-    card = await res.json();
+  try {
+    while (!card || !getArt(card)) {
+      const res = await fetch(queryURI + query);
+      card = await res.json();
+      if (card.object === 'error') return undefined;
+    }
+    return card;
+  } catch {
+    return undefined;
   }
-  return card;
 }
 
 export default fetchRandom;

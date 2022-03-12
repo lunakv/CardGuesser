@@ -7,6 +7,7 @@ import fetchRandom from './loadRandomCard';
 import { CardObject, getArt, getName } from './CardObject';
 import './GuessWindow.css';
 import { CardInfo } from './CardInfo';
+import { onGiveUp, onCorrect } from './stats';
 
 function namesEqual(a: string, b: string) {
   return a.toLowerCase() === b.toLowerCase();
@@ -36,7 +37,7 @@ function GuessWindow() {
     setLoading(false);
     document.getElementById('guess-input').focus();
   };
-  const handleGiveUp = () => { setRevealed(true); setCorrect(2); };
+  const handleGiveUp = () => { setRevealed(true); setCorrect(2); onGiveUp(); };
   const handleChange = (e) => {
     setGuess(e.target.value);
     setCorrect(2);
@@ -48,6 +49,7 @@ function GuessWindow() {
     if (guess && card && namesEqual(guess, getName(card))) {
       setCorrect(0);
       setRevealed(true);
+      onCorrect();
     } else {
       setCorrect(1);
     }

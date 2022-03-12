@@ -20,12 +20,11 @@ function GuessWindow() {
   const [correct, setCorrect] = useState<number>(2);
   const [revealed, setRevealed] = useState(false);
 
-  useEffect(() => {
-    if (!isLoading) return;
-    // eslint-disable-next-line no-constant-condition
-    fetchRandom().then(setCard);
-  }, [isLoading]);
+  const getNextCard = () => fetchRandom().then(setCard);
 
+  useEffect(() => {
+    getNextCard();
+  }, []);
   useEffect(() => {
     if (revealed) {
       document.getElementById('next').focus();
@@ -36,6 +35,7 @@ function GuessWindow() {
     setLoading(true);
     setRevealed(false);
     setCorrect(2);
+    getNextCard();
     return false;
   };
   const handleLoaded = () => {

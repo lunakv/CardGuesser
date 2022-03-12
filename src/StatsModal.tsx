@@ -1,5 +1,5 @@
 import { Modal } from 'react-bootstrap';
-import { currentWinStreak, allTimeWinStreak } from './stats';
+import { currentWinStreak, allTimeWinStreak, totalCorrect } from './stats';
 
 interface Props {
   show: boolean;
@@ -20,6 +20,10 @@ function StatsModal({ show, onHide }: Props) {
         <p>
           Longest Streak:
           {` ${allTimeWinStreak()}`}
+        </p>
+        <p>
+          Total Correct Guesses:
+          {` ${totalCorrect()}`}
         </p>
       </Modal.Body>
     </Modal>

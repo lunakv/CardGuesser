@@ -43,7 +43,7 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}   
       
       - name: Upload files
-        run: scp -r . deploy:CardGuesser 
+        run: scp -r $(pwd) deploy:CardGuesser 
      
       - name: Deployment completed
         run: echo 'Finished!'

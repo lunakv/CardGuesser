@@ -1,7 +1,7 @@
 /* eslint-disable no-await-in-loop */
 import { getArt } from './CardObject';
 
-const queryURI = 'https://api.scryfall.com/cards/random'
+const queryURI = 'https://api.scryfall.com/cards/random';
 
 async function fetchRandom() {
   let card;

@@ -5,6 +5,7 @@
 !.yarn/sdks
 !.yarn/versions
 
+# Swap for zero-install
 #!.yarn/cache
 .pnp.*
 

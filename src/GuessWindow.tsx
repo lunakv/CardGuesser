@@ -1,7 +1,7 @@
 import Button from 'react-bootstrap/Button';
 import { Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { FormEvent, useEffect, useState } from 'react';
-import fetchRandom from './loadRandomCard';
+import { fetchRandom } from './loadRandomCard';
 import { CardObject, getAllNames, getArt, getFullName } from './CardObject';
 import './GuessWindow.css';
 import { CardInfo } from './CardInfo';

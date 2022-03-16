@@ -1,10 +1,7 @@
 import { Modal } from 'react-bootstrap';
-import { currentWinStreak, allTimeWinStreak, totalCorrect } from './stats';
+import { currentWinStreak, allTimeWinStreak, totalCorrect, totalTries } from './stats';
 
-interface Props {
-  show: boolean;
-  onHide: () => void;
-}
+const winPercentage = () => ((totalCorrect() * 100) / totalTries()).toFixed(2);
 
 function StatsModal({ show, onHide }: Props) {
   return (
@@ -23,11 +20,20 @@ function StatsModal({ show, onHide }: Props) {
         </p>
         <p>
           Total Correct Guesses:
-          {` ${totalCorrect()}`}
+          {` ${totalCorrect()} (${winPercentage()}%)`}
+        </p>
+        <p>
+          Total Cards Seen:
+          {` ${totalTries()}`}
         </p>
       </Modal.Body>
     </Modal>
   );
+}
+
+interface Props {
+  show: boolean;
+  onHide: () => void;
 }
 
 export default StatsModal;

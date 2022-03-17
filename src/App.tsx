@@ -11,6 +11,7 @@ const repoUrl = 'https://github.com/lunakv/CardGuesser';
 function App() {
   const [showStats, setShowStats] = useState(false);
   const [card, setCard] = useState(undefined);
+  const [isLoading, setLoading] = useState(true);
   // actual function must be wrapped in arrow function to get around lazy assignment
   const [nextCardFn, setNextCardFn] = useState(() => fetchRandom);
 
@@ -36,8 +37,8 @@ function App() {
         </Navbar>
       </Container>
       <Container fluid="md">
-        <GuessWindow card={card} getNextCard={getNextCard} />
-        <FilterSelect setNextCardFn={(fn) => setNextCardFn(() => fn)} />
+        <GuessWindow card={card} getNextCard={getNextCard} isLoading={isLoading} setLoading={setLoading} />
+        {!isLoading && <FilterSelect setNextCardFn={(fn) => setNextCardFn(() => fn)} />}
       </Container>
 
       <StatsModal show={showStats} onHide={() => setShowStats(false)} />

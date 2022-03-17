@@ -18,8 +18,7 @@ enum Guess {
   Unknown,
 }
 
-function GuessWindow({ card, getNextCard }: Props) {
-  const [isLoading, setLoading] = useState(true);
+function GuessWindow({ card, getNextCard, isLoading, setLoading }: Props) {
   const [guess, setGuess] = useState<string>('');
   const [correct, setCorrect] = useState<Guess>(Guess.Unknown);
   const [revealed, setRevealed] = useState(false);
@@ -41,6 +40,7 @@ function GuessWindow({ card, getNextCard }: Props) {
     setLoading(true);
     setRevealed(false);
     setCorrect(Guess.Unknown);
+    setGuess('');
     getNextCard();
     return false;
   };
@@ -138,5 +138,7 @@ function GuessWindow({ card, getNextCard }: Props) {
 interface Props {
   getNextCard: () => void;
   card: CardObject;
+  isLoading: boolean;
+  setLoading: (arg: boolean) => void;
 }
 export default GuessWindow;

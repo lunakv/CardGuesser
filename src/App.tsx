@@ -38,7 +38,7 @@ function App() {
       </Container>
       <Container fluid="md">
         <GuessWindow card={card} getNextCard={getNextCard} isLoading={isLoading} setLoading={setLoading} />
-        {!isLoading && <FilterSelect setNextCardFn={(fn) => setNextCardFn(() => fn)} />}
+        <FilterSelect setNextCardFn={(fn) => setNextCardFn(() => fn)} hidden={isLoading} />
       </Container>
 
       <StatsModal show={showStats} onHide={() => setShowStats(false)} />

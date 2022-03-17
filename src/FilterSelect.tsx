@@ -12,7 +12,7 @@ enum FilterMode {
   Cube,
 }
 
-function FilterSelect({ setNextCardFn }: Props) {
+function FilterSelect({ setNextCardFn, hidden }: Props) {
   const [isExpanded, setExpanded] = useState(false);
   const [filter, setFilter] = useState('');
   const [mode, setMode] = useState(FilterMode.None);
@@ -46,7 +46,7 @@ function FilterSelect({ setNextCardFn }: Props) {
   const handleNoneFilter = () => setMode(FilterMode.None);
 
   return (
-    <>
+    <div hidden={hidden}>
       <Col xs={12} className="mt-5 text-center">
         <button type="button" className="link-button" onClick={() => setExpanded((e) => !e)}>
           Filter Card Pool {isExpanded ? <ChevronUpIcon size={16} /> : <ChevronDownIcon size={16} />}
@@ -93,12 +93,13 @@ function FilterSelect({ setNextCardFn }: Props) {
         show={shownModal === FilterMode.Cube}
         onHide={() => setShownModal(FilterMode.None)}
       />
-    </>
+    </div>
   );
 }
 
 interface Props {
   setNextCardFn: (arg: () => Promise<CardObject>) => void;
+  hidden: boolean;
 }
 
 export default FilterSelect;

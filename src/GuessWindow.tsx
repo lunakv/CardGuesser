@@ -8,8 +8,8 @@ import { onGiveUp, onCorrect } from './stats';
 import LoadingSpinner from './LoadingSpinner';
 
 function isCorrectName(a: string, b: CardObject) {
-  const al = a.toLowerCase();
-  return getFullName(b).toLowerCase() === al || getAllNames(b).some((n) => n.toLowerCase() === al);
+  const al = a.toLowerCase().trim();
+  return getFullName(b).toLowerCase().trim() === al || getAllNames(b).some((n) => n.toLowerCase().trim() === al);
 }
 
 enum Guess {

@@ -3,11 +3,19 @@ import { MarkGithubIcon } from '@primer/octicons-react';
 import { useState } from 'react';
 import GuessWindow from './GuessWindow';
 import StatsModal from './StatsModal';
+import FilterSelect from './FilterSelect';
+import { fetchRandom } from './loadRandomCard';
 
 const repoUrl = 'https://github.com/lunakv/CardGuesser';
 
 function App() {
   const [showStats, setShowStats] = useState(false);
+  const [card, setCard] = useState(undefined);
+  // actual function must be wrapped in arrow function to get around lazy assignment
+  const [nextCardFn, setNextCardFn] = useState(() => fetchRandom);
+
+  const getNextCard = () => nextCardFn().then(setCard);
+
   return (
     <>
       <Container fluid>
@@ -27,7 +35,10 @@ function App() {
           </Navbar.Collapse>
         </Navbar>
       </Container>
-      <GuessWindow />
+      <Container fluid="md">
+        <GuessWindow card={card} getNextCard={getNextCard} />
+        <FilterSelect setNextCardFn={(fn) => setNextCardFn(() => fn)} />
+      </Container>
 
       <StatsModal show={showStats} onHide={() => setShowStats(false)} />
     </>

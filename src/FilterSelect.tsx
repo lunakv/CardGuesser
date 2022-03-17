@@ -1,12 +1,50 @@
-import { Col, FormControl } from 'react-bootstrap';
-import { useState } from 'react';
+import { ButtonGroup, Col, ToggleButton } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 import { ChevronDownIcon, ChevronUpIcon } from '@primer/octicons-react';
 import './FilterSelect.css';
+import { CardObject } from './CardObject';
+import { fetchRandom, fetchRandomFromList } from './loadRandomCard';
+import { CubeFilterModal, ScryfallFilterModal } from './FilterModals';
 
-function FilterSelect({ filter, setFilter }: Props) {
+enum FilterMode {
+  None,
+  Scryfall,
+  Cube,
+}
+
+function FilterSelect({ setNextCardFn }: Props) {
   const [isExpanded, setExpanded] = useState(false);
+  const [filter, setFilter] = useState('');
+  const [mode, setMode] = useState(FilterMode.None);
+  const [shownModal, setShownModal] = useState(FilterMode.None);
+  const [cubeList, setCubeList] = useState([]);
 
-  const handleChange = (e) => setFilter(e.target.value);
+  useEffect(() => {
+    switch (mode) {
+      case FilterMode.None:
+        setNextCardFn(fetchRandom);
+        break;
+      case FilterMode.Scryfall:
+        setNextCardFn(() => fetchRandom(filter));
+        break;
+      case FilterMode.Cube:
+        setNextCardFn(() => fetchRandomFromList(cubeList));
+        break;
+      default:
+        break;
+    }
+  }, [mode, filter, cubeList]);
+
+  const handleScryfallFilter = (f) => {
+    setMode(FilterMode.Scryfall);
+    setFilter(f);
+  };
+  const handleCubeFilter = (list) => {
+    setMode(FilterMode.Cube);
+    setCubeList(list);
+  };
+  const handleNoneFilter = () => setMode(FilterMode.None);
+
   return (
     <>
       <Col xs={12} className="mt-5 text-center">
@@ -14,23 +52,53 @@ function FilterSelect({ filter, setFilter }: Props) {
           Filter Card Pool {isExpanded ? <ChevronUpIcon size={16} /> : <ChevronDownIcon size={16} />}
         </button>
       </Col>
-      <Col xs={12} className="mb-3">
-        <FormControl
-          type="input"
-          value={filter}
-          onChange={handleChange}
-          isValid={false}
-          hidden={!isExpanded}
-          placeholder="Enter a Scryfall compatible filter"
-        />
+      <Col xs={12} className="mt-1 text-center" hidden={!isExpanded}>
+        <ButtonGroup>
+          <ToggleButton
+            type="radio"
+            variant="outline-secondary"
+            value="none"
+            checked={mode === FilterMode.None}
+            onClick={handleNoneFilter}
+          >
+            No Filter
+          </ToggleButton>
+          <ToggleButton
+            type="radio"
+            variant="outline-secondary"
+            value="scryfall"
+            checked={mode === FilterMode.Scryfall}
+            onClick={() => setShownModal(FilterMode.Scryfall)}
+          >
+            Scryfall
+          </ToggleButton>
+          <ToggleButton
+            type="radio"
+            variant="outline-secondary"
+            value="cube"
+            checked={mode === FilterMode.Cube}
+            onClick={() => setShownModal(FilterMode.Cube)}
+          >
+            Cube
+          </ToggleButton>
+        </ButtonGroup>
       </Col>
+      <ScryfallFilterModal
+        onHide={() => setShownModal(FilterMode.None)}
+        show={shownModal === FilterMode.Scryfall}
+        onSubmit={handleScryfallFilter}
+      />
+      <CubeFilterModal
+        onSubmit={handleCubeFilter}
+        show={shownModal === FilterMode.Cube}
+        onHide={() => setShownModal(FilterMode.None)}
+      />
     </>
   );
 }
 
 interface Props {
-  filter: string;
-  setFilter: (string) => void;
+  setNextCardFn: (arg: () => Promise<CardObject>) => void;
 }
 
 export default FilterSelect;

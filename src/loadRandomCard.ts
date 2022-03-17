@@ -23,13 +23,14 @@ async function fetchCard(uri: string) {
 
 const getRandom = (list: string[]) => (list.length ? list[Math.floor(Math.random() * list.length)] : undefined);
 
-export const fetchRandom = (filter) => fetchCard(randomUri(filter));
+export const fetchRandom = (filter: string = '') => fetchCard(randomUri(filter));
 export const fetchById = (id) => fetchCard(cardIdUri(id));
 export const fetchRandomFromList = (list) => fetchCard(cardIdUri(getRandom(list)));
 
 export async function fetchCubeCardIds(id: string) {
   try {
     const res = await fetch(cubeUri(id));
+    if (!res.ok) return undefined;
     const cube = await res.json();
     return cube.cards.map((c) => c.cardID);
   } catch {

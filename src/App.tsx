@@ -15,7 +15,11 @@ function App() {
   // actual function must be wrapped in arrow function to get around lazy assignment
   const [nextCardFn, setNextCardFn] = useState(() => fetchRandom);
 
-  const getNextCard = () => nextCardFn().then(setCard);
+  const getNextCard = () =>
+    nextCardFn().then((c) => {
+      if (c === undefined) setLoading(false);
+      setCard(c);
+    });
 
   return (
     <>

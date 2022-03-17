@@ -75,7 +75,7 @@ function GuessWindow({ card, getNextCard, isLoading, setLoading }: Props) {
       <Row className="justify-content-lg-center">
         <LoadingSpinner hidden={!isLoading} />
         <Col xs={12} hidden={isLoading || !!card} className="p-5">
-          <p>Could not load a card. Please check your filter.</p>
+          <p>Could not load a card. Please check your filter or refresh the page.</p>
         </Col>
         <Col lg="6" hidden={isLoading || !card}>
           <Row className="justify-content-center">
@@ -93,7 +93,7 @@ function GuessWindow({ card, getNextCard, isLoading, setLoading }: Props) {
         </Col>
       </Row>
       <Form onSubmit={handleSubmit} hidden={isLoading}>
-        <Row style={{ height: '3em' }}>
+        <Row style={{ height: '3em' }} hidden={!card}>
           <Form.Control
             id="guess-input"
             hidden={revealed}

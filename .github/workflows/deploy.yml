@@ -44,7 +44,7 @@ jobs:
           SSH_PORT: ${{ secrets.SSH_PORT }}   
       
       - name: Upload files
-        run: scp -r dist deploy:$DST_DIR
+        run: rsync -az -e ssh --delete --delete-after dist deploy:$DST_DIR
         env:
           DST_DIR: ${{ secrets.DESTINATION }}
      
